@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>gestao-escola</name>
+	<name>gestao-escolar</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -22,7 +22,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1620455758382</id>
+			<id>1620457239262</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
