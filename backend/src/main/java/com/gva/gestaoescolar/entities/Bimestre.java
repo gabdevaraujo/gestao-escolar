@@ -2,12 +2,24 @@ package com.gva.gestaoescolar.entities;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tb_aluno")
 public class Bimestre {
     
     public final Integer DIAS = 40;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer faltas;
+
+
     private List<Aluno> alunos;
 
     private List<Avaliacao> avs;

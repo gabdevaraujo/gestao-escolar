@@ -1,16 +1,28 @@
 package com.gva.gestaoescolar.entities;
 
+import java.io.Serializable;
 import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.gva.gestaoescolar.entities.enums.Situacao;
 
-public class Aluno {
+@Entity
+@Table(name = "tb_aluno")
+public class Aluno implements Serializable{
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private Situacao situacao;
-    private List<Bimestre> bimestres;
 
+    
+    private List<Bimestre> bimestres;
 
     public Aluno() {
     }
