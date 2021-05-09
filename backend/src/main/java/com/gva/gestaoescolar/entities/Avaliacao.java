@@ -8,14 +8,16 @@ public class Avaliacao {
 
     private Bimestre bimestre;
 
+    private Aluno aluno;
 
     public Avaliacao() {
     }
 
-    public Avaliacao(Long id, String nome, Double peso, Bimestre bimestre) {
+    public Avaliacao(Long id, String nome, Double peso, Aluno aluno, Bimestre bimestre) {
         this.id = id;
         this.nome = nome;
         this.peso = peso;
+        this.aluno = aluno;
         this.bimestre = bimestre;
     }
 
@@ -51,5 +53,13 @@ public class Avaliacao {
         this.bimestre = bimestre;
     }
 
-    
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+        
 }

@@ -21,7 +21,7 @@ public class Aluno implements Serializable{
     private String nome;
     private Situacao situacao;
 
-    
+    private List<Avaliacao> avs;
     private List<Bimestre> bimestres;
 
     public Aluno() {
