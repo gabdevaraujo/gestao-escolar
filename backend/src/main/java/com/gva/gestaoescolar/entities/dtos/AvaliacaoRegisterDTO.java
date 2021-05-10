@@ -1,53 +1,31 @@
-package com.gva.gestaoescolar.entities;
+package com.gva.gestaoescolar.entities.dtos;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.gva.gestaoescolar.entities.Aluno;
+import com.gva.gestaoescolar.entities.Avaliacao;
+import com.gva.gestaoescolar.entities.Bimestre;
 import com.gva.gestaoescolar.entities.enums.TipoAv;
 
-@Entity
-@Table(name = "tb_avs")
-public class Avaliacao implements Serializable{
+public class AvaliacaoRegisterDTO implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private Integer tipoAv;
     private Double peso;
-
-    @ManyToOne()
-    @JoinColumn(name = "id_bimestre")
     private Bimestre bimestre;
-
-    @ManyToOne
-    @JoinColumn(name = "id_aluno")
     private Aluno aluno;
 
-    public Avaliacao() {
+    public AvaliacaoRegisterDTO() {
     }
 
-    public Avaliacao(Long id, TipoAv tipoAv, Double peso, Bimestre bimestre, Aluno aluno) {
-        this.id = id;
+    public AvaliacaoRegisterDTO(TipoAv tipoAv, Double peso, Aluno aluno, Bimestre bimestre) {
         this.tipoAv = tipoAv.getCodigo();
         this.peso = peso;
-        this.bimestre = bimestre;
         this.aluno = aluno;
+        this.bimestre = bimestre;
     }
 
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public AvaliacaoRegisterDTO (Avaliacao av){
+        
     }
 
     public TipoAv getTipoAv() {

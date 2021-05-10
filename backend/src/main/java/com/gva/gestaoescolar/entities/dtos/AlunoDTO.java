@@ -1,39 +1,27 @@
-package com.gva.gestaoescolar.entities;
+package com.gva.gestaoescolar.entities.dtos;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.gva.gestaoescolar.entities.Falta;
 import com.gva.gestaoescolar.entities.enums.Situacao;
 
-@Entity
-@Table(name = "tb_aluno")
-public class Aluno implements Serializable{
+public class AlunoDTO implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private Integer situacao;
 
-    @OneToMany(mappedBy = "aluno")
-    private List<Avaliacao> avs = new ArrayList<>();
+    private List<AvaliacaoRegisterDTO> avs = new ArrayList<>();
 
-    @OneToMany(mappedBy = "aluno")
     private List<Falta> faltas = new ArrayList<>();
 
 
-    public Aluno() {
+    public AlunoDTO() {
     }
 
-    public Aluno(Long id, String nome, Situacao situacao, List<Avaliacao> avs, List<Falta> faltas) {
+    public AlunoDTO(Long id, String nome, Situacao situacao, List<AvaliacaoRegisterDTO> avs, List<Falta> faltas) {
         this.id = id;
         this.nome = nome;
         this.situacao = situacao.getCodigo();
@@ -65,11 +53,11 @@ public class Aluno implements Serializable{
         this.situacao = situacao.getCodigo();
     }
 
-    public List<Avaliacao> getAvs() {
+    public List<AvaliacaoRegisterDTO> getAvs() {
         return this.avs;
     }
 
-    public void setAvs(List<Avaliacao> avs) {
+    public void setAvs(List<AvaliacaoRegisterDTO> avs) {
         this.avs = avs;
     }
 
