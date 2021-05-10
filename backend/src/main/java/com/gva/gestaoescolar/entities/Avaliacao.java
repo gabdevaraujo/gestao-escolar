@@ -1,21 +1,41 @@
 package com.gva.gestaoescolar.entities;
 
-public class Avaliacao {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.gva.gestaoescolar.entities.enums.TipoAv;
+
+@Entity
+@Table(name = "tb_avs")
+public class Avaliacao implements Serializable{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private Integer tipoAv;
     private Double peso;
 
+    @ManyToOne()
+    @JoinColumn(name = "id_bimestre")
     private Bimestre bimestre;
 
+    @ManyToOne
+    @JoinColumn(name = "id_aluno")
     private Aluno aluno;
 
     public Avaliacao() {
     }
 
-    public Avaliacao(Long id, String nome, Double peso, Aluno aluno, Bimestre bimestre) {
+    public Avaliacao(Long id, TipoAv tipoAv, Double peso, Aluno aluno, Bimestre bimestre) {
         this.id = id;
-        this.nome = nome;
+        this.tipoAv = tipoAv.getCodigo();
         this.peso = peso;
         this.aluno = aluno;
         this.bimestre = bimestre;
@@ -29,12 +49,12 @@ public class Avaliacao {
         this.id = id;
     }
 
-    public String getNome() {
-        return this.nome;
+    public TipoAv getTipoAv() {
+        return TipoAv.toEnum(tipoAv);
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTipoAv(TipoAv tipoAv) {
+        this.tipoAv = tipoAv.getCodigo();
     }
 
     public Double getPeso() {
@@ -54,12 +74,11 @@ public class Avaliacao {
     }
 
     public Aluno getAluno() {
-        return aluno;
+        return this.aluno;
     }
 
     public void setAluno(Aluno aluno) {
         this.aluno = aluno;
     }
-
         
 }

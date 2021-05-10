@@ -1,12 +1,14 @@
 package com.gva.gestaoescolar.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.gva.gestaoescolar.entities.enums.Situacao;
@@ -19,21 +21,25 @@ public class Aluno implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Situacao situacao;
+    private Integer situacao;
 
-    private List<Avaliacao> avs;
-    private List<Bimestre> bimestres;
+    @OneToMany(mappedBy = "aluno")
+    private List<Avaliacao> avs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "aluno")
+    private List<Falta> faltas = new ArrayList<>();
+
 
     public Aluno() {
     }
 
-    public Aluno(Long id, String nome, Situacao situacao, List<Bimestre> bimestres) {
+    public Aluno(Long id, String nome, Situacao situacao, List<Avaliacao> avs, List<Falta> faltas) {
         this.id = id;
         this.nome = nome;
-        this.situacao = situacao;
-        this.bimestres = bimestres;
+        this.situacao = situacao.getCodigo();
+        this.avs = avs;
+        this.faltas = faltas;
     }
-
 
     public Long getId() {
         return this.id;
@@ -52,15 +58,35 @@ public class Aluno implements Serializable{
     }
 
     public Situacao getSituacao() {
-        return this.situacao;
+        return Situacao.toEnum(situacao);
     }
 
     public void setSituacao(Situacao situacao) {
-        this.situacao = situacao;
+        this.situacao = situacao.getCodigo();
     }
 
-    public List<Bimestre> getBimestres() {
-        return this.bimestres;
+    public List<Avaliacao> getAvs() {
+        return this.avs;
     }
-    
+
+    public void setAvs(List<Avaliacao> avs) {
+        this.avs = avs;
+    }
+
+    public List<Falta> getFaltas() {
+        return this.faltas;
+    }
+
+    public void setFaltas(List<Falta> faltas) {
+        this.faltas = faltas;
+    }
+
+    public int getTotalFaltas(){
+        int totalFaltas = 0;
+        for(Falta f : faltas){
+            totalFaltas += f.getQtd();
+        }
+        return totalFaltas;
+    }
+
 }

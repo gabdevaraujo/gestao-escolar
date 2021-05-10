@@ -1,0 +1,37 @@
+INSERT INTO tb_bimestre(nome) VALUES ('Bim1');
+INSERT INTO tb_bimestre(nome) VALUES ('Bim2');
+INSERT INTO tb_bimestre(nome) VALUES ('Bim3');
+INSERT INTO tb_bimestre(nome) VALUES ('Bim4');
+
+INSERT INTO tb_aluno(nome, situacao) VALUES ('Pedro', null);
+INSERT INTO tb_aluno(nome, situacao) VALUES ('Maria', null);
+INSERT INTO tb_aluno(nome, situacao) VALUES ('José', null);
+
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (10, 1, 1);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (5, 2, 1);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (3, 3, 1);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (7, 4, 1);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (4, 1, 2);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (1, 2, 2);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (3, 3, 2);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (0, 4, 2);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (10, 1, 3);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (10, 2, 3);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (12, 3, 3);
+INSERT INTO tb_faltas(qtd, id_bimestre, id_aluno) VALUES (15, 4, 3);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (1, 1.0, 1, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (2, 1.8, 1, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (3, 2.5, 1, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (4, 2.5, 1, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (1, 1.5, 2, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (2, 2.0, 2, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (3, 2.4, 2, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (4, 3.0, 2, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (1, 1.5, 3, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (2, 2.3, 3, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (3, 2.8, 3, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (4, 2.9, 3, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (1, 1.4, 4, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (2, 2.5, 4, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (3, 2.5, 4, 1);
+INSERT INTO tb_avs(tipo_Av, peso, id_bimestre, id_aluno) VALUES (4, 3.0, 4, 1);
