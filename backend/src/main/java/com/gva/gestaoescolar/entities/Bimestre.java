@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_bimestre")
 public class Bimestre implements Serializable{
@@ -21,8 +23,10 @@ public class Bimestre implements Serializable{
     private String nome;
 
     @OneToMany(mappedBy = "bimestre")
+    @JsonIgnore
     private List<Avaliacao> avs = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "bimestre")
     private List<Falta> faltas = new ArrayList<>();
 

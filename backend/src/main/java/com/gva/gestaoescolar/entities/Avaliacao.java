@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.gva.gestaoescolar.entities.enums.TipoAv;
 
 @Entity
@@ -28,6 +29,7 @@ public class Avaliacao implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "id_aluno")
+    @JsonIgnore
     private Aluno aluno;
 
     public Avaliacao() {
