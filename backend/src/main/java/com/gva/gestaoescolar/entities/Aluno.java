@@ -89,4 +89,22 @@ public class Aluno implements Serializable{
         return totalFaltas;
     }
 
+    public void verificaSituacao(List<Avaliacao> avs){
+        Double totalNotas = .0;
+        for(Avaliacao av : avs){
+            totalNotas += av.getPeso();
+        }
+        Double mediaFinal = totalNotas / 16;
+
+        Double porcFaltas = getTotalFaltas() / 160.0 * 100;
+
+        if(mediaFinal >= 6.0 && porcFaltas < 0.75)
+            setSituacao(Situacao.APROVADO);
+        
+        if(mediaFinal < 5.0 || porcFaltas >= 0.75)
+            setSituacao(Situacao.REPROVADO);
+
+        if(mediaFinal >= 5.0 && mediaFinal > 6.0)
+            setSituacao(Situacao.REPROVADO);
+    }
 }

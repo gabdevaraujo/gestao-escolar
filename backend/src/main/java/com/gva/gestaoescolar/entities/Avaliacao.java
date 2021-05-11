@@ -29,18 +29,17 @@ public class Avaliacao implements Serializable{
 
     @ManyToOne
     @JoinColumn(name = "id_aluno")
-    @JsonIgnore
     private Aluno aluno;
 
     public Avaliacao() {
     }
 
-    public Avaliacao(Long id, TipoAv tipoAv, Double peso, Aluno aluno, Bimestre bimestre) {
+    public Avaliacao(Long id, TipoAv tipoAv, Double peso, Bimestre bimestre, Aluno aluno) {
         this.id = id;
         this.tipoAv = tipoAv.getCodigo();
         this.peso = peso;
-        this.aluno = aluno;
         this.bimestre = bimestre;
+        this.aluno = aluno;
     }
 
     public Long getId() {

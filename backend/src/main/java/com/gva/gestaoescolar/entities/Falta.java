@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.gva.gestaoescolar.entities.dtos.FaltasDTO;
+
 @Entity
 @Table(name = "tb_faltas")
 public class Falta implements Serializable{
@@ -34,6 +36,23 @@ public class Falta implements Serializable{
         this.qtd = qtd;
         this.bimestre = bimestre;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public Aluno getAluno() {
+        return this.aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
 
     public Bimestre getBimestre() {
         return bimestre;

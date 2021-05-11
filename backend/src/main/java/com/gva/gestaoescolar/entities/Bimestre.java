@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "tb_bimestre")
@@ -23,15 +24,14 @@ public class Bimestre implements Serializable{
     private String nome;
 
     @OneToMany(mappedBy = "bimestre")
-    @JsonIgnore
     private List<Avaliacao> avs = new ArrayList<>();
 
-    @JsonIgnore
+    
     @OneToMany(mappedBy = "bimestre")
     private List<Falta> faltas = new ArrayList<>();
 
     public Bimestre() {
-    }  
+    }
 
     public Bimestre(Long id, String nome, List<Avaliacao> avs, List<Falta> faltas) {
         this.id = id;

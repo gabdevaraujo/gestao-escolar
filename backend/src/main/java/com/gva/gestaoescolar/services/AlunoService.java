@@ -5,8 +5,6 @@ import java.util.Optional;
 
 import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Avaliacao;
-import com.gva.gestaoescolar.entities.Bimestre;
-import com.gva.gestaoescolar.entities.enums.TipoAv;
 
 import org.springframework.stereotype.Service;
 

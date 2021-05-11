@@ -5,8 +5,9 @@ import java.util.Optional;
 
 import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Avaliacao;
+import com.gva.gestaoescolar.entities.enums.Situacao;
 import com.gva.gestaoescolar.repositories.AlunoRepository;
-import com.gva.gestaoescolar.repositories.AvaliacapRepository;
+import com.gva.gestaoescolar.repositories.AvaliacaoRepository;
 import com.gva.gestaoescolar.services.AlunoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,10 @@ public class AlunoServiceImpl implements AlunoService{
     private AlunoRepository repository;
 
     @Autowired
-    private AvaliacapRepository avRepository;
+    private AvaliacaoRepository avRepository;
+
+    @Autowired
+    private FaltasServiceImpl faltasService;
 
     @Override
     public List<Aluno> getAll() {
@@ -39,6 +43,13 @@ public class AlunoServiceImpl implements AlunoService{
         );
     }
 
+    public Aluno getSituacaoByAlunoId(Long id) {
+        
+        Optional<Aluno> aluno = Optional.of(repository.findById(id).get());
+        Aluno al = updateSituacao(aluno.get());
+        return repository.save(al);
+    }
+
     @Override
     public Aluno create(Aluno aluno) {
         Optional<Aluno> optAluno = Optional.of(repository.save(aluno));
@@ -53,7 +64,14 @@ public class AlunoServiceImpl implements AlunoService{
     @Override
     public Aluno update(Aluno aluno) {
         Aluno newObj = getById(aluno.getId());
-        updateData(newObj, aluno);
+        updateNome(newObj, aluno);
+        updateSituacao(aluno);
+        return repository.save(newObj);
+    }
+
+    public Aluno setSituacao(Aluno aluno){
+        Aluno newObj = getById(aluno.getId());
+        updateSituacao(aluno);
         return repository.save(newObj);
     }
 
@@ -74,7 +92,37 @@ public class AlunoServiceImpl implements AlunoService{
         );
     }
     
-    public void updateData(Aluno newObj, Aluno obj){
+    public void updateNome(Aluno newObj, Aluno obj){
         newObj.setNome(obj.getNome());
     }
+
+    public Aluno updateSituacao(Aluno aluno){
+        Aluno newObj = aluno;
+        Double totalNotas = .0;
+        Double mediaFinal = .0;
+        for(Avaliacao av : aluno.getAvs()){
+            totalNotas += av.getPeso();
+        }
+        mediaFinal = totalNotas / 4;
+        Double porcFaltas =  faltasService.getTotalFaltas(aluno.getId()) * 100 / 160.0;
+        
+        if(mediaFinal >= 6 && porcFaltas < 25.0){
+            newObj.setSituacao(Situacao.toEnum(1));
+        }
+            
+        
+        if(mediaFinal < 5.0 || porcFaltas >= 25.0){
+            newObj.setSituacao(Situacao.toEnum(2));
+        }
+            
+
+        if(mediaFinal >= 5.0 && mediaFinal < 6.0){
+            newObj.setSituacao(Situacao.toEnum(3));
+        }
+            
+        System.out.println("Situação " + newObj.getSituacao());
+        
+        return newObj;
+    }
+
 }
