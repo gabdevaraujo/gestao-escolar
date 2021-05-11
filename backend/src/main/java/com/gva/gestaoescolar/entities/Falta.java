@@ -35,6 +35,20 @@ public class Falta implements Serializable{
         this.bimestre = bimestre;
     }
 
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public Aluno getAluno() {
+        return this.aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+
     public Bimestre getBimestre() {
         return bimestre;
     }

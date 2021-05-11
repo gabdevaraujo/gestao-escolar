@@ -10,12 +10,17 @@ import javax.websocket.server.PathParam;
 
 import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Avaliacao;
+import com.gva.gestaoescolar.entities.Falta;
+import com.gva.gestaoescolar.entities.dtos.AlunoSituacaoDTO;
 import com.gva.gestaoescolar.entities.dtos.AvaliacaoPorAlunoDTO;
 import com.gva.gestaoescolar.entities.dtos.AvaliacaoRegisterDTO;
+import com.gva.gestaoescolar.entities.dtos.FaltasDTO;
 import com.gva.gestaoescolar.repositories.AlunoRepository;
+import com.gva.gestaoescolar.services.FaltasService;
 import com.gva.gestaoescolar.services.Impl.AlunoServiceImpl;
 import com.gva.gestaoescolar.services.Impl.AvaliacaoServiceImpl;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +43,9 @@ class AlunoController {
 
     @Autowired
     private AvaliacaoServiceImpl avService;
+
+    @Autowired
+    private FaltasService faltasService;
 
     @GetMapping
     public ResponseEntity<List<Aluno>> getAll() {
@@ -67,7 +75,7 @@ class AlunoController {
     public ResponseEntity<Aluno> update(@PathVariable("id") String id, @RequestBody Aluno aluno) {
         Aluno obj  = aluno;
         obj.setId(Long.valueOf(id));
-        obj = service.update(obj);
+        service.update(obj);
         return ResponseEntity.noContent().build();
     }
 
@@ -75,6 +83,23 @@ class AlunoController {
     public ResponseEntity<HttpStatus> delete(@PathVariable("id") String id) {
         service.delete(Long.valueOf(id));
         return ResponseEntity.noContent().build();
+    }
+
+    
+    @PutMapping("{id}/situacao")
+    public ResponseEntity<Aluno> updateSituacao(@PathVariable("id") String id, @RequestBody Aluno aluno) {
+        Aluno obj  = aluno;
+        obj.setId(Long.valueOf(id));
+        service.setSituacao(obj);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("{id}/situacao")
+    public ResponseEntity<AlunoSituacaoDTO> getSituacao(@PathVariable("id") String id){
+        Aluno aluno = service.getSituacaoByAlunoId(Long.valueOf(id));
+        System.out.println("Aqui" + aluno.getId() + aluno.getSituacao());
+        AlunoSituacaoDTO dto = new AlunoSituacaoDTO(aluno);
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping("{alunoId}/avaliacoes")
@@ -95,6 +120,27 @@ class AlunoController {
     public ResponseEntity<Avaliacao> createAvalicao(@RequestBody Avaliacao av){
         Avaliacao avaliacao = avService.create(av);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(avaliacao.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping("{alunoId}/faltas")
+    public ResponseEntity<List<FaltasDTO>> getFaltasByAlunoId(@PathVariable("alunoId") String alunoId){
+        List<Falta> faltas = faltasService.getByAlunoId(Long.valueOf(alunoId));
+        List<FaltasDTO> listDto = faltas.stream().map( obj -> new FaltasDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok(listDto);
+    }
+
+    @GetMapping("{alunoId}/{bimestreId}/faltas")
+    public ResponseEntity<List<FaltasDTO>> getFaltasByAlunoId(@PathVariable("alunoId") String alunoId, @PathVariable("bimestreId") String bimestreId){
+        List<Falta> faltas = faltasService.getByAlunoAndBimestreId(Long.valueOf(alunoId), Long.valueOf(bimestreId));
+        List<FaltasDTO> listDto = faltas.stream().map( obj -> new FaltasDTO(obj)).collect(Collectors.toList());
+        return ResponseEntity.ok(listDto);
+    }
+    
+    @PostMapping("faltas")
+    public ResponseEntity<Falta> create(@RequestBody Falta falta){
+        Falta flt = faltasService.create(falta);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(flt.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 }
