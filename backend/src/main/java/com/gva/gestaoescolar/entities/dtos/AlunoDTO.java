@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Falta;
 import com.gva.gestaoescolar.entities.enums.Situacao;
 
@@ -13,20 +14,21 @@ public class AlunoDTO implements Serializable{
     private String nome;
     private Integer situacao;
 
-    private List<AvaliacaoRegisterDTO> avs = new ArrayList<>();
-
-    private List<Falta> faltas = new ArrayList<>();
+    private Integer totalFaltas;
 
 
     public AlunoDTO() {
     }
 
-    public AlunoDTO(Long id, String nome, Situacao situacao, List<AvaliacaoRegisterDTO> avs, List<Falta> faltas) {
+    public AlunoDTO(Long id, String nome, List<Falta> faltas, Situacao situacao) {
         this.id = id;
         this.nome = nome;
         this.situacao = situacao.getCodigo();
-        this.avs = avs;
-        this.faltas = faltas;
+    }
+
+    public AlunoDTO(Aluno aluno){
+        id = aluno.getId();
+        nome = aluno.getNome();
     }
 
     public Long getId() {
@@ -52,29 +54,4 @@ public class AlunoDTO implements Serializable{
     public void setSituacao(Situacao situacao) {
         this.situacao = situacao.getCodigo();
     }
-
-    public List<AvaliacaoRegisterDTO> getAvs() {
-        return this.avs;
-    }
-
-    public void setAvs(List<AvaliacaoRegisterDTO> avs) {
-        this.avs = avs;
-    }
-
-    public List<Falta> getFaltas() {
-        return this.faltas;
-    }
-
-    public void setFaltas(List<Falta> faltas) {
-        this.faltas = faltas;
-    }
-
-    public int getTotalFaltas(){
-        int totalFaltas = 0;
-        for(Falta f : faltas){
-            totalFaltas += f.getQtd();
-        }
-        return totalFaltas;
-    }
-
 }

@@ -11,6 +11,7 @@ import javax.websocket.server.PathParam;
 import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Avaliacao;
 import com.gva.gestaoescolar.entities.Falta;
+import com.gva.gestaoescolar.entities.dtos.AlunoDTO;
 import com.gva.gestaoescolar.entities.dtos.AlunoSituacaoDTO;
 import com.gva.gestaoescolar.entities.dtos.AvaliacaoPorAlunoDTO;
 import com.gva.gestaoescolar.entities.dtos.AvaliacaoRegisterDTO;
@@ -48,20 +49,22 @@ class AlunoController {
     private FaltasService faltasService;
 
     @GetMapping
-    public ResponseEntity<List<Aluno>> getAll() {
+    public ResponseEntity<List<AlunoDTO>> getAll() {
         
         List<Aluno> items = service.getAll();
+        List<AlunoDTO> dtos = items.stream().map( x -> new AlunoDTO(x)).collect(Collectors.toList());
 
         if (items.isEmpty())
             return ResponseEntity.noContent().build();
 
-        return ResponseEntity.ok(items);
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Aluno> getById(@PathVariable("id") String id){
+    public ResponseEntity<AlunoDTO> getById(@PathVariable("id") String id){
         Aluno aluno = service.getById(Long.valueOf(id));
-        return ResponseEntity.ok(aluno);
+        AlunoDTO dto = new AlunoDTO(aluno);
+        return ResponseEntity.ok(dto);
     }
 
     @PostMapping

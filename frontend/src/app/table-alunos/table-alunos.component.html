@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    Alunos
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let aluno of alunos">
+          <th scope="row">{{aluno.id}}</th>
+          <td>{{aluno.nome}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
