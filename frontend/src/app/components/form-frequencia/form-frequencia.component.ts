@@ -1,7 +1,6 @@
 
 import { GenericService } from './../../services/genericService.service';
 import { Component, OnInit } from '@angular/core';
-import { Faltas } from 'src/app/models/Faltas';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -12,8 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormFrequenciaComponent implements OnInit {
 
-  falta: Faltas = new Faltas(            );
-  bimestres = [1, 2, 3, 4];
+
 
   constructor(
     private genericService: GenericService,
@@ -22,12 +20,12 @@ export class FormFrequenciaComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.activatedRouter.snapshot.paramMap.get('id');
-    this.falta.alunoId = id;
+
     console.log(id);
 
   }
 
-  lancarFaltas() {
+  /* lancarFaltas() {
     this.genericService.put("alunos/faltas", this.falta)
       .subscribe(dados => console.log(dados) //save or update
       );
@@ -42,5 +40,5 @@ export class FormFrequenciaComponent implements OnInit {
     this.lancarFaltas();
     console.log("Faltas lançadas: " , this.falta);
 
-  }
+  } */
 }

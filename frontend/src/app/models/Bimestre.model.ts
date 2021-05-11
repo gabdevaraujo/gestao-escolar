@@ -1,10 +1,10 @@
-import { Avaliacao } from "./Avaliacao.model";
-import { Faltas } from "./Faltas";
+import { Avaliacao } from './Avaliacao.model';
+import { Frequencia } from './Frequencia.model';
 
 export class Bimestre {
-
-   id;
-   nome;
-   avs: Avaliacao[];
-  faltas: Faltas[];
+  id;
+  inicio: Date;
+  fim: Date;
+  avs: Avaliacao[];
+  frequencia: Frequencia[];
 }

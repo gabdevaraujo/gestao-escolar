@@ -6,8 +6,6 @@ export class Avaliacao{
   id: Number;
   tipoAv: Number;
   peso: Number;
-
   bimestre: Bimestre;
-
   aluno: Aluno;
 }

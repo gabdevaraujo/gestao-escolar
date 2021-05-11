@@ -1,23 +1,20 @@
 <div class="card">
   <div class="card-header">
-    Aluno {{falta.alunoId}}
+    AlunoS
   </div>
   <div class="card-body">
     <div class="row g-3">
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example"  [(ngModel)]="falta.bimestreId" name="bimestreId" (change) = "teste($event.target.value)">
-          <option selected>Selecione o Bimestre</option>
-          <option *ngFor="let bim of bimestres" value="{{bim}}">{{bim}}</option>
+        <input type="date" name="" id="" class="form-control">
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" aria-label="Default select example">
+          <option value="1">Falta</option>
+          <option value="2">Presença</option>
         </select>
       </div>
       <div class="col-md-3">
-        <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Faltas do bimestre" aria-label="Faltas do bimestre" aria-describedby="Faltas do bimestre" [(ngModel)]="falta.qtd" name="qtd">
-          <span class="input-group-text" id="basic-addon2">Faltas</span>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <button type="button" class="btn btn-primary" (click) = "imprimeForm()">Lançar faltas</button>
+        <button type="button" class="btn btn-primary" >Lançar faltas</button>
       </div>
     </div>
   </div>
