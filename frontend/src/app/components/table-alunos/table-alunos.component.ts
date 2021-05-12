@@ -25,7 +25,11 @@ export class TableAlunosComponent implements OnInit {
 
   getAlunos(){
     return this.genericService.get("alunos")
-      .subscribe((dados) =>this.alunos = dados);
+      .subscribe((dados) =>{
+        console.log(dados);
+
+        this.alunos = dados});
+
   }
 
   lancarFaltas(alunoId : number){

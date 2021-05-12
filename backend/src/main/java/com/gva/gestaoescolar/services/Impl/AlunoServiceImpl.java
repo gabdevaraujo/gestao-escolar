@@ -2,6 +2,7 @@ package com.gva.gestaoescolar.services.Impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Avaliacao;
@@ -28,7 +29,7 @@ public class AlunoServiceImpl implements AlunoService{
     @Override
     public List<Aluno> getAll() {
         List<Aluno> alunos = repository.findAll();
-        return alunos;
+        return alunos.stream().map( x -> update(updateSituacao(x))).collect(Collectors.toList());
     }
 
     @Override
