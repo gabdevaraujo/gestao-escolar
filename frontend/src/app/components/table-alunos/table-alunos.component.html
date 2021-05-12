@@ -7,15 +7,17 @@
       <thead class="table-dark">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Nome</th>
-          <th></th>
-          <th></th>
+          <th scope="col" style="width: 70%;">Nome</th>
+          <th scope="col">Situação</th>
+          <th colspan="2">Ações</th>
+
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let aluno of alunos">
           <th scope="row">{{aluno.id}}</th>
           <td style="width: 70%;">{{aluno.nome}}</td>
+          <td>{{aluno.situacao}}</td>
           <td>
             <button type="button" class="btn btn-dark" (click) = "lancarFaltas(aluno.id)">Lançar Faltas</button>
           </td>
