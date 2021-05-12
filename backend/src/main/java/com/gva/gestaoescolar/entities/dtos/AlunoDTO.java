@@ -29,6 +29,7 @@ public class AlunoDTO implements Serializable{
     public AlunoDTO(Aluno aluno){
         id = aluno.getId();
         nome = aluno.getNome();
+        situacao = aluno.getSituacao().getCodigo();
     }
 
     public Long getId() {
