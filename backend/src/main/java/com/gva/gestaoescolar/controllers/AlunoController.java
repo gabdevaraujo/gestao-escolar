@@ -23,6 +23,7 @@ import com.gva.gestaoescolar.services.Impl.FaltasServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
 @RequestMapping("/alunos")
-class AlunoController {
+@CrossOrigin(origins = "*")
+public class AlunoController {
 
     @Autowired
     private AlunoServiceImpl service;
@@ -50,6 +52,7 @@ class AlunoController {
     public ResponseEntity<List<AlunoDTO>> getAll() {
         
         List<Aluno> items = service.getAll();
+        System.out.println(items);
         List<AlunoDTO> dtos = items.stream().map( x -> new AlunoDTO(x)).collect(Collectors.toList());
 
         if (items.isEmpty())

@@ -2,7 +2,9 @@ package com.gva.gestaoescolar.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,11 +25,11 @@ public class Avaliacao implements Serializable{
     private Integer tipoAv;
     private Double peso;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_bimestre")
     private Bimestre bimestre;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_aluno")
     private Aluno aluno;
 
