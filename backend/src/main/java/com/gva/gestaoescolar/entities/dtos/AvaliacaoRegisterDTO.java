@@ -11,29 +11,33 @@ public class AvaliacaoRegisterDTO implements Serializable{
 
     private Integer tipoAv;
     private Double peso;
-    private Bimestre bimestre;
-    private Aluno aluno;
+    private Long bimestreId;
+    private Long alunoId;
 
     public AvaliacaoRegisterDTO() {
     }
 
-    public AvaliacaoRegisterDTO(TipoAv tipoAv, Double peso, Aluno aluno, Bimestre bimestre) {
-        this.tipoAv = tipoAv.getCodigo();
+
+    public AvaliacaoRegisterDTO(Integer tipoAv, Double peso, Long bimestreId, Long alunoId) {
+        this.tipoAv = tipoAv;
         this.peso = peso;
-        this.aluno = aluno;
-        this.bimestre = bimestre;
+        this.bimestreId = bimestreId;
+        this.alunoId = alunoId;
+    }
+    
+    public AvaliacaoRegisterDTO(Avaliacao av){
+        tipoAv = av.getTipoAv().getCodigo();
+        peso = av.getPeso();
+        bimestreId = av.getBimestre().getId();
+        alunoId = av.getAluno().getId();
     }
 
-    public AvaliacaoRegisterDTO (Avaliacao av){
-        
+    public Integer getTipoAv() {
+        return this.tipoAv;
     }
 
-    public TipoAv getTipoAv() {
-        return TipoAv.toEnum(tipoAv);
-    }
-
-    public void setTipoAv(TipoAv tipoAv) {
-        this.tipoAv = tipoAv.getCodigo();
+    public void setTipoAv(Integer tipoAv) {
+        this.tipoAv = tipoAv;
     }
 
     public Double getPeso() {
@@ -44,20 +48,20 @@ public class AvaliacaoRegisterDTO implements Serializable{
         this.peso = peso;
     }
 
-    public Bimestre getBimestre() {
-        return this.bimestre;
+    public Long getBimestreId() {
+        return this.bimestreId;
     }
 
-    public void setBimestre(Bimestre bimestre) {
-        this.bimestre = bimestre;
+    public void setBimestreId(Long bimestreId) {
+        this.bimestreId = bimestreId;
     }
 
-    public Aluno getAluno() {
-        return this.aluno;
+    public Long getAlunoId() {
+        return this.alunoId;
     }
 
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
+    public void setAlunoId(Long alunoId) {
+        this.alunoId = alunoId;
     }
         
 }

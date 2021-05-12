@@ -3,9 +3,9 @@ import { Bimestre } from './Bimestre.model';
 
 export class Avaliacao{
 
-  id: Number;
-  tipoAv: Number;
-  peso: Number;
-  bimestre: Bimestre;
-  aluno: Aluno;
+  id: number;
+  tipoAv: number;
+  peso: number;
+  bimestreId: number;
+  alunoId: number;
 }

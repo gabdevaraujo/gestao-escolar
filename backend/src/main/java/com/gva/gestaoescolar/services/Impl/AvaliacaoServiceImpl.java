@@ -6,6 +6,8 @@ import java.util.Optional;
 import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Avaliacao;
 import com.gva.gestaoescolar.entities.Bimestre;
+import com.gva.gestaoescolar.entities.dtos.AvaliacaoRegisterDTO;
+import com.gva.gestaoescolar.entities.enums.TipoAv;
 import com.gva.gestaoescolar.repositories.AvaliacaoRepository;
 import com.gva.gestaoescolar.services.AvaliacaoService;
 import com.gva.gestaoescolar.services.BimestreService;
@@ -59,6 +61,15 @@ public class AvaliacaoServiceImpl implements AvaliacaoService{
                 "Não foi possível criar este aluno: " + av.getAluno().getNome()
             )
         );
+    }
+
+    public Avaliacao fromRegisterDtoToAvaliacao(AvaliacaoRegisterDTO dto){
+        Avaliacao av = new Avaliacao();
+        av.setAluno(alunoService.getById(dto.getAlunoId()));
+        av.setBimestre(bimestreService.getById(dto.getBimestreId()));
+        av.setPeso(dto.getPeso());
+        av.setTipoAv(TipoAv.toEnum(dto.getTipoAv()));
+        return av;
     }
 
 }

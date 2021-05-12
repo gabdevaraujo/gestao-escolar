@@ -65,6 +65,14 @@ public class FaltasServiceImpl implements FaltasService{
 
     @Override
     public Falta create(Falta falta) {
+        List<Falta> faltas = getByAlunoAndBimestreId(falta.getAluno().getId(), falta.getBimestre().getId());
+        System.out.println(faltas);
+        if (!faltas.isEmpty()) {
+            for(Falta f : faltas){
+                repository.delete(f);
+            }
+        }
+        
         Optional<Falta> optFlt = Optional.of(repository.save(falta));
 
         return optFlt.orElseThrow(

@@ -1,4 +1,4 @@
-
+import { Frequencia } from './../../models/Frequencia.model';
 import { GenericService } from './../../services/genericService.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -11,7 +11,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FormFrequenciaComponent implements OnInit {
 
-
+  frequencia: Frequencia = new Frequencia();
+  bimestres = [1, 2, 3, 4];
+  opEnd: boolean;
 
   constructor(
     private genericService: GenericService,
@@ -19,16 +21,17 @@ export class FormFrequenciaComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.activatedRouter.snapshot.paramMap.get('id');
-
+    const id = Number(this.activatedRouter.snapshot.paramMap.get('id'));
+    this.frequencia.alunoId = id;
     console.log(id);
 
   }
 
-  /* lancarFaltas() {
-    this.genericService.put("alunos/faltas", this.falta)
-      .subscribe(dados => console.log(dados) //save or update
-      );
+  lancarFrequencia() {
+    this.frequencia.bimestreId = Number(this.frequencia.bimestreId);
+    this.frequencia.qtd = Number(this.frequencia.qtd);
+    this.genericService.post("alunos/faltas", this.frequencia)
+      .subscribe(dados => this.opEnd = true);
   }
 
   teste(evento) {
@@ -37,8 +40,7 @@ export class FormFrequenciaComponent implements OnInit {
   }
 
   imprimeForm() {
-    this.lancarFaltas();
-    console.log("Faltas lançadas: " , this.falta);
-
-  } */
+    this.lancarFrequencia();
+    console.log("Frequencia lançadas: " , this.frequencia);
+  }
 }

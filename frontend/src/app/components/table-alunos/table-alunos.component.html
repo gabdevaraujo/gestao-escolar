@@ -8,12 +8,20 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Nome</th>
+          <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let aluno of alunos">
           <th scope="row">{{aluno.id}}</th>
-          <td>{{aluno.nome}}</td>
+          <td style="width: 70%;">{{aluno.nome}}</td>
+          <td>
+            <button type="button" class="btn btn-dark" (click) = "lancarFaltas(aluno.id)">Lançar Faltas</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-secondary" (click) = "lancarNotas(aluno.id)" >Lançar Notas</button>
+          </td>
         </tr>
 
       </tbody>

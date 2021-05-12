@@ -5,22 +5,20 @@
   <div class="card-body">
     <div class="row g-3">
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example"  name="bimestreId">
-          <option selected>Selecione o Bimestre</option>
-          <option *ngFor="" value=""></option>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="av.bimestreId" name="bimestreId">
+          <option *ngFor="let bim of bimestres" value={{bim}}>{{bim}}</option>
         </select>
       </div>
       <div class="col-md-4">
-        <select class="form-select" aria-label="Default select example"  name="bimestreId">
-          <option selected>Selecione a avaliação</option>
-          <option *ngFor="" value=""></option>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="av.tipoAv" name="tipoAv">
+          <option *ngFor="let tipo of tiposAvs" value={{tipo.id}}>{{tipo.descricao}}</option>
         </select>
       </div>
       <div class="col-md-3">
-        <input type="text" class="form-control" id="nota" name="nota" placeholder="Insira a nota">
+        <input type="text" class="form-control" id="nota" name="peso" placeholder="Insira a nota" [(ngModel)]="av.peso">
       </div>
       <div class="col-md-3">
-        <button type="button" class="btn btn-primary" >Lançar Nota</button>
+        <button type="button" class="btn btn-primary" (click)="lancarAvaliacao()">Lançar Nota</button>
       </div>
     </div>
   </div>
@@ -30,14 +28,13 @@
   <div class="card-header">
     <div class="row">
       <div class="col-md-3">
-        <select class="form-select" aria-label="Default select example"  name="bimestreId">
-          <option selected>Selecione o Bimestre</option>
-          <option *ngFor="" value=""></option>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="reqBim" name="reqBim" (change)="getAvaliacoesPorBimestre($event.target.value)">
+          <option *ngFor="let bim of bimestres" value={{bim}}>{{bim}}</option>
         </select>
       </div>
       <div class="col-md-7"></div>
       <div class="col-md-2">
-        Nota Total:
+        Nota Total: {{notaTotal}}
       </div>
     </div>
   </div>
@@ -45,15 +42,16 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Tipo</th>
+          <th scope="col">Tipo Av</th>
           <th scope="col">Nota</th>
 
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
+        <tr *ngFor="let item of avs;">
+          <th scope="col">{{item.tipoAv}}</th>
+          <th scope="col">{{item.peso}}</th>
+
         </tr>
       </tbody>
     </table>

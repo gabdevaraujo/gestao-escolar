@@ -9,6 +9,7 @@ import { TableAlunosComponent } from './components/table-alunos/table-alunos.com
 import { FormFrequenciaComponent } from './components/form-frequencia/form-frequencia.component';
 import { FormsModule } from '@angular/forms';
 import { FormAvalicaoComponent } from './components/form-avalicao/form-avalicao.component';
+import { ToastComponent } from './components/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormAvalicaoComponent } from './components/form-avalicao/form-avalicao.
     NavbarComponent,
     TableAlunosComponent,
     FormFrequenciaComponent,
-    FormAvalicaoComponent
+    FormAvalicaoComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,

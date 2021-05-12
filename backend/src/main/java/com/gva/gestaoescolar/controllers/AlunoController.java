@@ -1,6 +1,7 @@
 package com.gva.gestaoescolar.controllers;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,7 +12,9 @@ import com.gva.gestaoescolar.entities.Falta;
 import com.gva.gestaoescolar.entities.dtos.AlunoDTO;
 import com.gva.gestaoescolar.entities.dtos.AlunoSituacaoDTO;
 import com.gva.gestaoescolar.entities.dtos.AvaliacaoPorAlunoDTO;
+import com.gva.gestaoescolar.entities.dtos.AvaliacaoRegisterDTO;
 import com.gva.gestaoescolar.entities.dtos.FaltasDTO;
+import com.gva.gestaoescolar.entities.enums.TipoAv;
 import com.gva.gestaoescolar.services.FaltasService;
 import com.gva.gestaoescolar.services.Impl.AlunoServiceImpl;
 import com.gva.gestaoescolar.services.Impl.AvaliacaoServiceImpl;
@@ -115,10 +118,19 @@ class AlunoController {
     }
 
     @PostMapping("avaliacoes")
-    public ResponseEntity<Avaliacao> createAvalicao(@RequestBody Avaliacao av){
-        Avaliacao avaliacao = avService.create(av);
+    public ResponseEntity<Avaliacao> createAvalicao(@RequestBody AvaliacaoRegisterDTO av){
+        Avaliacao avaliacao = avService.create(avService.fromRegisterDtoToAvaliacao(av));
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(avaliacao.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @GetMapping("avaliacoes")
+    public ResponseEntity<List<TipoAv>> getTiposAvaliacao(){
+        List<TipoAv> tiposAvs = new ArrayList<>();
+        for(TipoAv t : TipoAv.values()){
+            tiposAvs.add(t);
+        }
+        return ResponseEntity.ok(tiposAvs);
     }
 
     @GetMapping("{alunoId}/faltas")

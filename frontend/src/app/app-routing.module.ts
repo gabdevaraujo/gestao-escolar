@@ -6,8 +6,8 @@ import { FormAvalicaoComponent } from './components/form-avalicao/form-avalicao.
 
 const routes: Routes = [
   { path: '', component: TableAlunosComponent },
-  { path: ':id/frequencia', component: FormFrequenciaComponent },
-  { path: ':id/avaliacoes', component: FormAvalicaoComponent }
+  { path: 'alunos/:id/frequencia', component: FormFrequenciaComponent },
+  { path: 'alunos/:id/avaliacoes', component: FormAvalicaoComponent }
 ];
 
 @NgModule({
