@@ -2,8 +2,6 @@ package com.gva.gestaoescolar.entities.dtos;
 
 import java.io.Serializable;
 
-import com.gva.gestaoescolar.entities.Aluno;
-import com.gva.gestaoescolar.entities.Bimestre;
 import com.gva.gestaoescolar.entities.Falta;
 
 public class FaltasDTO implements Serializable{

@@ -37,6 +37,9 @@ export class FormAvalicaoComponent implements OnInit {
   avs: Avaliacao[];
   reqBim: number;
   notaTotal: number;
+  media: number;
+  faltas: number;
+  situacao: string;
 
 
   constructor(
@@ -47,15 +50,38 @@ export class FormAvalicaoComponent implements OnInit {
   ngOnInit(): void {
     const alunoId = this.activatedRouter.snapshot.paramMap.get('id');
     this.av.alunoId = Number(alunoId);
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-
+    this.getAvaliacoes();
+    this.getFaltasTotais();
+    this.getSituacao();
   }
 
   lancarAvaliacao(){
     this.genericService.post('alunos/avaliacoes', this.av)
       .subscribe(dados => this.opEnd = true);
+  }
+
+  getAvaliacoes() {
+    this.genericService.get(`alunos/${this.av.alunoId}/avaliacoes`)
+      .subscribe(dados => {
+        this.media =
+          dados.map(a => a.peso)
+            .reduce((x, y) => x + y) / 4;
+      }
+    );
+  }
+
+  getFaltasTotais() {
+    this.genericService.get(`alunos/${this.av.alunoId}/faltas`)
+      .subscribe(dados =>
+        this.faltas =
+          dados.map(f => f.qtd)
+            .reduce((x, y) => x + y)
+    );
+  }
+
+  getSituacao() {
+    this.genericService.get(`alunos/${this.av.alunoId}`)
+      .subscribe(dados => this.situacao = dados.situacao);
   }
 
   getAvaliacoesPorBimestre(event){

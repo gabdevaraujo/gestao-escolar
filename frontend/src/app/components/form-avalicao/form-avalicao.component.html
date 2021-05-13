@@ -5,16 +5,19 @@
   <div class="card-body">
     <div class="row g-3">
       <div class="col-md-4">
+        <label for="" class="form-label">Selecione o Bimestre</label>
         <select class="form-select" aria-label="Default select example" [(ngModel)]="av.bimestreId" name="bimestreId">
           <option *ngFor="let bim of bimestres" value={{bim}}>{{bim}}</option>
         </select>
       </div>
       <div class="col-md-4">
+        <label for="" class="form-label">Selecione o tipo de prova</label>
         <select class="form-select" aria-label="Default select example" [(ngModel)]="av.tipoAv" name="tipoAv">
           <option *ngFor="let tipo of tiposAvs" value={{tipo.id}}>{{tipo.descricao}}</option>
         </select>
       </div>
       <div class="col-md-3">
+        <label for="" class="form-label">Insira a Nota</label>
         <input type="text" class="form-control" id="nota" name="peso" placeholder="Insira a nota" [(ngModel)]="av.peso">
       </div>
       <div class="col-md-3">
@@ -29,6 +32,7 @@
     <div class="row">
       <div class="col-md-3">
         <select class="form-select" aria-label="Default select example" [(ngModel)]="reqBim" name="reqBim" (change)="getAvaliacoesPorBimestre($event.target.value)">
+          <option selected>Selecione um bimestre</option>
           <option *ngFor="let bim of bimestres" value={{bim}}>{{bim}}</option>
         </select>
       </div>
@@ -55,6 +59,22 @@
         </tr>
       </tbody>
     </table>
+  </div>
+</div>
+
+<div class="card mt-5">
+  <div class="card-header">
+    <div class="row">
+      <div class="col-md-2">
+        Média: {{media}}
+      </div>
+      <div class="col-md-2">
+        Faltas: {{faltas}}
+      </div>
+      <div class="col-md-2">
+        <span [ngClass]="situacao == 'REPROVADO' ? 'text-danger' : ''">Situação: {{situacao}}</span>
+      </div>
+    </div>
   </div>
 </div>
 

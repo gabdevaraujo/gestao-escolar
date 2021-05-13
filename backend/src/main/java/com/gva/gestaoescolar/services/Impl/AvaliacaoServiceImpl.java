@@ -54,17 +54,26 @@ public class AvaliacaoServiceImpl implements AvaliacaoService{
 
     @Override
     public Avaliacao create(Avaliacao av) {
+        List<Avaliacao> avs = getByAlunoBimestreId(av.getAluno().getId(), av.getBimestre().getId());
+        for(Avaliacao a : avs){
+            if(a.getTipoAv().getCodigo() == av.getTipoAv().getCodigo()){
+                System.out.println("if " + a.getTipoAv().getCodigo());
+                repository.delete(a);
+            }
+            System.out.println("for " + a.getTipoAv());
+        }
         Optional<Avaliacao> optAv = Optional.of(repository.save(av));
 
         return optAv.orElseThrow(
             () -> new ObjectNotFoundException(
-                "Não foi possível criar este aluno: " + av.getAluno().getNome()
+                "Não foi possível criar esta avaliação: " + av.getAluno().getNome()
             )
         );
     }
 
     public Avaliacao fromRegisterDtoToAvaliacao(AvaliacaoRegisterDTO dto){
         Avaliacao av = new Avaliacao();
+        av.setId(dto.getId());
         av.setAluno(alunoService.getById(dto.getAlunoId()));
         av.setBimestre(bimestreService.getById(dto.getBimestreId()));
         av.setPeso(dto.getPeso());

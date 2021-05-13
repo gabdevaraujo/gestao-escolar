@@ -7,12 +7,13 @@ import { GenericService } from './genericService.service';
 })
 export class AlunosService {
 
-  alunos: Aluno[];
-
   constructor(private genericService: GenericService) {}
 
   getAlunos(){
-    return this.genericService.get("alunos")
-      .subscribe((dados) =>this.alunos = dados);
+    this.genericService.get("alunos");
+  }
+
+  getAlunosById(alunoId){
+    this.genericService.get(`alunos/${alunoId}`);
   }
 }

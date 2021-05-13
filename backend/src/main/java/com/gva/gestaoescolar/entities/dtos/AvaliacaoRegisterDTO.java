@@ -2,13 +2,12 @@ package com.gva.gestaoescolar.entities.dtos;
 
 import java.io.Serializable;
 
-import com.gva.gestaoescolar.entities.Aluno;
 import com.gva.gestaoescolar.entities.Avaliacao;
-import com.gva.gestaoescolar.entities.Bimestre;
-import com.gva.gestaoescolar.entities.enums.TipoAv;
+
 
 public class AvaliacaoRegisterDTO implements Serializable{
 
+    private Long id;
     private Integer tipoAv;
     private Double peso;
     private Long bimestreId;
@@ -18,7 +17,8 @@ public class AvaliacaoRegisterDTO implements Serializable{
     }
 
 
-    public AvaliacaoRegisterDTO(Integer tipoAv, Double peso, Long bimestreId, Long alunoId) {
+    public AvaliacaoRegisterDTO(Long id, Integer tipoAv, Double peso, Long bimestreId, Long alunoId) {
+        this.id = id;
         this.tipoAv = tipoAv;
         this.peso = peso;
         this.bimestreId = bimestreId;
@@ -26,11 +26,22 @@ public class AvaliacaoRegisterDTO implements Serializable{
     }
     
     public AvaliacaoRegisterDTO(Avaliacao av){
+        id = av.getId();
         tipoAv = av.getTipoAv().getCodigo();
         peso = av.getPeso();
         bimestreId = av.getBimestre().getId();
         alunoId = av.getAluno().getId();
     }
+
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public Integer getTipoAv() {
         return this.tipoAv;
