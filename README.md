@@ -1,45 +1,54 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+<div align="center">
+<img width="100%" height = "250px" src="" alt="cover" />
+</div>
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+<h1> Hello Fellow < Developers/ >! <img src = "https://raw.githubusercontent.com/MartinHeinz/MartinHeinz/master/wave.gif" width = 50px> </h1>
+<p align='center'>
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+![visitors](https://visitor-badge.glitch.me/badge?page_id=gabdevaraujo.gabdevaraujo)
 
----
+</p>
+<div size='20px'> Hi! My name is Gabriel. Thank You for taking the time to view my GitHub Profile :smile: 
+</div>
 
-## Edit a file
+<h2> About Me <img src = "https://media0.giphy.com/media/KDDpcKigbfFpnejZs6/giphy.gif?cid=ecf05e47oy6f4zjs8g1qoiystc56cu7r9tb8a1fe76e05oty&rid=giphy.gif" width = 100px></h2>
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+<img width="55%" align="right" alt="Github" src="https://raw.githubusercontent.com/onimur/.github/master/.resources/git-header.svg" />
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
 
----
+- 🔭 I’m currently working on 
 
-## Create a file
+- 🌱 I’m currently learning  
 
-Next, you’ll add a new file to this repository.
+- 👯 I’m looking to collaborate on  
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+- 💬 Talk to me about  
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+<h2> Skills <img src = "https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width = 32px> </h2>
+<a href= https://github.com/gabdevaraujo?tab=repositories&q=&type=&language=java&sort= > <img width ='32px' src ='https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/java.svg'> </a>
+<a href= https://github.com/gabdevaraujo?tab=repositories&q=&type=&language=spring&sort= > <img width ='32px' src ='https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/spring.svg'> </a>
+<a href= https://github.com/gabdevaraujo?tab=repositories&q=&type=&language=angularjs&sort= > <img width ='32px' src ='https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/angularjs.svg'> </a>
 
----
 
-## Clone a repository
+<h2> Connect with me <img src='https://raw.githubusercontent.com/ShahriarShafin/ShahriarShafin/main/Assets/handshake.gif' width="100px"> </h2>
+<a href = 'https://www.github.com/gabdevaraujo'> <img width = '32px' align= 'center' src="https://raw.githubusercontent.com/rahulbanerjee26/githubAboutMeGenerator/main/icons/github.svg"/></a> 
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+<h2> Stuff I worked on last week  <img src = "https://media1.giphy.com/media/JZ40cnfnN11KycrvMF/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width = 70px> </h2>
+<a href="https://github.com/anuraghazra/github-readme-stats">
+<img align="center" src="https://github-readme-stats.vercel.app/api/wakatime?username=@&compact=True"/>
+</a>
+<br>
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+
+<h2> My GitHub Stats <img src='https://media1.giphy.com/media/du3J3cXyzhj75IOgvA/giphy.gif?cid=ecf05e47x2g034i9pzwtzzsd3xgg2w9nr94t4tflbbgo3008&rid=giphy.gif' width='32px'> </h2>
+
+![Metrics](https://metrics.lecoq.io/gabdevaraujo?template=classic&config.timezone=America%2FToronto)
+
+<h2> Some Programming Humor for you <img align ='center' src='https://media2.giphy.com/media/UQDSBzfyiBKvgFcSTw/giphy.gif?cid=ecf05e47p3cd513axbek3f56ti3jzizq8hincw20jauyyfyw&rid=giphy.gif' width = '32px'></h2>
+
+![Jokes Card](https://readme-jokes.vercel.app/api?theme=default)
+
+
+<br>
+<footer align='center'>README made with help of <a href='https://github.com/rahulbanerjee26/githubProfileReadmeGenerator'>githubProfileReadmeGenerator</a> </footer>
